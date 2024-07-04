@@ -256,6 +256,12 @@ pub fn build_bundled(out_dir: &str, out_path: &Path) {
 
     cfg.compile(LIB_NAME);
 
+    std::fs::copy(
+        PathBuf::from(out_dir).join("liblibsql.a"),
+        PathBuf::from(out_dir).join("libsqlite3.a"),
+    )
+    .unwrap();
+
     println!("cargo:lib_dir={out_dir}");
 }
 
